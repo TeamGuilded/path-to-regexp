@@ -21,10 +21,10 @@
   ],
   "scripts": {
     "bench": "vitest bench",
-    "build": "ts-scripts build",
+    "build-ignore": "ts-scripts build",
     "format": "ts-scripts format",
     "lint": "ts-scripts lint",
-    "prepare": "ts-scripts install && npm run build",
+    "prepare-ignore": "ts-scripts install && npm run build-ignore",
     "size": "size-limit",
     "specs": "ts-scripts specs",
     "test": "ts-scripts test && npm run size"
