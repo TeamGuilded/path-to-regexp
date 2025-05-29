@@ -65,13 +65,6 @@ export const PARSER_TESTS: ParserTestSet[] = [
     ]),
   },
   {
-    path: "/:café",
-    expected: new TokenData([
-      { type: "text", value: "/" },
-      { type: "param", name: "café" },
-    ]),
-  },
-  {
     path: '/:"123"',
     expected: new TokenData([
       { type: "text", value: "/" },
@@ -113,13 +106,6 @@ export const STRINGIFY_TESTS: StringifyTestSet[] = [
       { type: "param", name: "test" },
     ]),
     expected: "/:test",
-  },
-  {
-    data: new TokenData([
-      { type: "text", value: "/" },
-      { type: "param", name: "café" },
-    ]),
-    expected: "/:café",
   },
   {
     data: new TokenData([
@@ -353,13 +339,6 @@ export const MATCH_TESTS: MatchTestSet[] = [
         expected: false,
       },
       {
-        input: "/caf%C3%A9",
-        expected: {
-          path: "/caf%C3%A9",
-          params: { test: "café" },
-        },
-      },
-      {
         input: "/;,:@&=+$-_.!~*()",
         expected: {
           path: "/;,:@&=+$-_.!~*()",
@@ -506,13 +485,6 @@ export const MATCH_TESTS: MatchTestSet[] = [
         expected: {
           path: "/route.json",
           params: { test: "route.json" },
-        },
-      },
-      {
-        input: "/caf%C3%A9",
-        expected: {
-          path: "/caf%C3%A9",
-          params: { test: "café" },
         },
       },
     ],
@@ -984,56 +956,6 @@ export const MATCH_TESTS: MatchTestSet[] = [
       },
     ],
   },
-
-  /**
-   * Unicode matches.
-   */
-  {
-    path: "/:foo",
-    tests: [
-      {
-        input: "/café",
-        expected: { path: "/café", params: { foo: "café" } },
-      },
-    ],
-  },
-  {
-    path: "/:foo",
-    options: {
-      decode: false,
-    },
-    tests: [
-      {
-        input: "/caf%C3%A9",
-        expected: {
-          path: "/caf%C3%A9",
-          params: { foo: "caf%C3%A9" },
-        },
-      },
-    ],
-  },
-  {
-    path: "/café",
-    tests: [
-      {
-        input: "/café",
-        expected: { path: "/café", params: {} },
-      },
-    ],
-  },
-  {
-    path: "/café",
-    options: {
-      encodePath: encodeURI,
-    },
-    tests: [
-      {
-        input: "/caf%C3%A9",
-        expected: { path: "/caf%C3%A9", params: {} },
-      },
-    ],
-  },
-
   /**
    * Hostnames.
    */

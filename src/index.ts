@@ -1,7 +1,7 @@
 const DEFAULT_DELIMITER = "/";
 const NOOP_VALUE = (value: string) => value;
-const ID_START = /^[$_\p{ID_Start}]$/u;
-const ID_CONTINUE = /^[$\u200c\u200d\p{ID_Continue}]$/u;
+const ID_START = /^[$_a-zA-Z]$/u;
+const ID_CONTINUE = /^[$\u200c\u200da-zA-Z0-9-]$/u;
 const DEBUG_URL = "https://git.new/pathToRegexpError";
 
 /**
